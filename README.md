@@ -2,7 +2,7 @@
 
 ## PROOF OF CONCEPT
 
-A Battery powered ESP8266 is attached to a cyclists helmet, optionally recharged from solar.
+A battery powered ESP8266 is attached to a cyclists helmet, optionally recharged from solar.
 
 A mobile phone acts both as a hotspot and a front-end for viewing observations.
 

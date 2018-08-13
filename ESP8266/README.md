@@ -12,5 +12,5 @@ Other than actual sensor readings being used, the following will make the deploy
 - Indicator LED (self flashing) during Format process.
 - RGB LED for indication of other states.
 - Vibration indicator.
-- 433mhz reciever for remote sensor (like Cadence contact).
-- Battery, TP4056 charger and solor panels.
+- 433mhz reciever for remote sensor (like Cadence).
+- Battery, TP4056 charger and solar panels.
