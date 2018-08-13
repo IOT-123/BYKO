@@ -8,7 +8,7 @@ Some mock values are published every second.
 
 Other than actual sensor readings being used, the following will make the deployment more robust:
 
-- Momentary button when held down on boot, formats SPIFFS and resets WifiManeger then reboots.
+- Momentary button when held down on boot, formats SPIFFS and resets WifiManager then reboots.
 - Indicator LED (self flashing) during Format process.
 - RGB LED for indication of other states.
 - Vibration indicator.
