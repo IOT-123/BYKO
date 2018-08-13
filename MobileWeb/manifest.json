@@ -1,0 +1,21 @@
+﻿{
+    "short_name": "BYKO",
+    "name": "IOT123 BYKO",
+    "icons": [
+      {
+        "src":"img/iot123_192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src":"img/iot123_512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+
+    ],
+    "start_url": "/?utm_source=homescreen",
+    "background_color": "black",
+    "theme_color": "black",
+    "display": "standalone"
+  }

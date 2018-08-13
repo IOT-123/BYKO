@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="author" content="Nic Roche">
+    <meta name="description" content="IOT Extensible Bicycle Sensing, also the act of piking whilst making a smartarse reference">
+    <!-- https://www.howtogeek.com/196087/how-to-add-websites-to-the-home-screen-on-any-smartphone-or-tablet/ -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="theme-color" content="black">
+    <title>IOT123_BYKO</title>
+    <link rel="manifest" href="manifest.json ">
+    <link rel="icon" sizes="192x192" href="img/iot123_192.png ">
+    <link rel="icon" sizes="512x512" href="img/iot123_512.png ">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/vnd.microsoft.icon ">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+Paaji">
+    <link rel="stylesheet" href="css/dead-simple-grid.css" type="text/css ">
+    <link rel="stylesheet" href="css/index.css" type="text/css ">
+    <link rel="stylesheet" href="css/tingle.min.css" />
+    <link rel="stylesheet" href="css/settings.css" />
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css ">
+    <link rel="stylesheet" type="text/css" href="css/addtohomescreen.css">
+    <link rel="stylesheet" type="text/css" href="css/vanilla-toast.css">
+</head>
+
+<body scroll="no" style="overflow: hidden ">
+    <div class="container ">
+        <div class="row ">
+            <img src="img/lock-2.png" onclick="toggleLock(this); ">
+            <div class="middle-div ">
+                <img id="toolbar_btn_play" src="img/play.png" onclick="togglePlay(this);" class="middle-icon ">
+            </div>
+            <img src="img/cog.png" class="right-icon" onclick="showSettings(); ">
+
+        </div>
+        <hr>
+        <div class="row ">
+            <div class="label top-label ">SPEED</div>
+            <div id="screen_val_spd" class="number number-big ">00</div>
+        </div>
+        <div class="row ">
+            <div id="lbl_max_spd" class="label half left ">MAX</div>
+            <div id="screen_val_max_spd" class="number number-small half right ">00</div>
+        </div>
+        <hr>
+        <div class="row ">
+            <div class="col half ">
+                <div class="col tier-2 dynamic_field" dynamic-field="DISTANCE" localstorage-key="dynamicField1" onclick="cycle_field(this)">
+                    <div class="number number-small left-sm-nums field-value">00</div>
+                    <div class="label tier-2-label left-label ">DISTANCE</div>
+                </div>
+            </div>
+            <div class="col half ">
+                <div class="col tier-2 dynamic_field" dynamic-field="DIRECTION" localstorage-key="dynamicField2" onclick="cycle_field(this)">
+                    <div class="number number-small right-sm-num field-value">--</div>
+                    <div class="label tier-2-label right-label ">DIRECTION</div>
+                </div>
+            </div>
+            <div class="vr "></div>
+        </div>
+        <hr>
+        <div class="row ">
+            <div class="col half ">
+                <div class="col tier-2 dynamic_field" dynamic-field="LATITUDE" localstorage-key="dynamicField3" onclick="cycle_field(this)">
+                    <div id="screen_val_fld1" class="number number-small left-sm-nums field-value">00</div>
+                    <div id="screen_lbl_fld1" class="label tier-2-label left-label ">BPM</div>
+                </div>
+            </div>
+            <div class="col half ">
+                <div class="col tier-2 dynamic_field" dynamic-field="LONGITUDE" localstorage-key="dynamicField4" onclick="cycle_field(this)">
+                    <div id="screen_val_fld2" class="number number-small right-sm-num field-value">00</div>
+                    <div id="screen_lbl_fld2" class="label tier-2-label right-label ">CADENCE</div>
+                </div>
+            </div>
+            <div class="vr "></div>
+        </div>
+        <hr>
+    </div>
+
+    <script src="js/NoSleep.min.js"></script>
+    <script src="js/addtohomescreen.min.js"></script>
+    <script src="js/class-byko-localstorage.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/geolocation.js"></script>
+    <script src="js/tingle.min.js"></script>
+    <script src="js/vanilla-toast.js"></script>
+    <script src="js/mosquitto.js"></script>
+    <script src="js/class-byko-mqtt.js"></script>
+    <script src="js/mobile_readings.js"></script>
+    <script src="js/settings.js "></script>
+
+    <form class="settings-form" style="display: none">
+
+        <div id="settings_menu_page">
+            <h2>SETTINGS</h2>
+            <hr class="settings_hr">
+            <div class="row ">
+                <div class="col half ">
+                    <div class="col tier-2 " onclick="show_page('settings_trip_page')">
+                        <img class="settings_icon_left" src="img/settings_trip.jpeg">
+                        <div class="label tier-2-label left-label settings_label">TRIP</div>
+                    </div>
+                </div>
+                <div class="col half ">
+                    <div class="col tier-2" onclick="show_page('settings_services_page')">
+                        <img class="setting_icon_right" src="img/settings_services.png">
+                        <div class="label tier-2-label right-label settings_label">SERVICES</div>
+                    </div>
+                </div>
+                <div class="vr settings_vr"></div>
+            </div>
+            <hr class="settings_hr">
+            <div class="row ">
+                <div class="col half ">
+                    <div class="col tier-2 " onclick="show_page('settings_fields_page')">
+                        <img class="settings_icon_left" src="img/settings_fields.png">
+                        <div class="label tier-2-label left-label settings_label">FIELDS</div>
+                    </div>
+                </div>
+                <div class="col half ">
+                    <div class="col tier-2 " onclick="show_page('settings_readings_page')">
+                        <img class="setting_icon_right" src="img/observations.png">
+                        <div class="label tier-2-label right-label settings_label">READINGS</div>
+                    </div>
+                </div>
+                <div class="vr settings_vr"></div>
+            </div>
+            <hr class="settings_hr">
+            <div class="row ">
+                <div class="col half ">
+                    <div class="col tier-2 ">
+
+                    </div>
+                </div>
+                <div class="col half ">
+                    <div class="col tier-2 ">
+
+                    </div>
+                </div>
+                <div class="vr settings_vr"></div>
+            </div>
+            <hr class="settings_hr">
+        </div>
+
+        <div id="settings_trip_page" class="page_hidden">
+            <h2 class="arrow_back" onclick="show_page('settings_menu_page')">&#8678;</h2>
+            <hr class="settings_hr">
+            <h3>TRIP</h3>
+            <div class="settings_biline">(all actions are immediate and not saved)</div>
+            <div class="settings-label-50 ">DISTANCE</div>
+            <div class="settings-value-50 ">
+                <button onclick="butResetDistance()">RESET</button>
+            </div>
+            <div class="settings-label-50 ">MAX. SPEED</div>
+            <div class="settings-value-50 ">
+                <button onclick="butResetMax()">RESET</button>
+            </div>
+            <div class="settings-label-50 ">MOCK COORDS.</div>
+            <div class="settings-value-50 ">
+                <input id="settings_chk_mock" type="checkbox" onclick="chkMockClick(this) ">
+                <!-- <div class="action-message ">ACTIONS ARE IMMEDIATE</div> -->
+            </div>
+            <div class="clearfloat "></div>
+        </div>
+
+        <div id="settings_services_page" class="page_hidden">
+            <h2 class="arrow_back" onclick="show_page('settings_menu_page')">&#8678;</h2>
+            <hr class="settings_hr">
+            <h3>MQTT SERVICES</h3>
+            <div class="settings-label ">BROKER</div>
+            <div class="settings-value ">
+                <input id="settings_val_mqtt_broker" type="text" onfocus="toast('The MQTT Broker Hostname. <br><br>(needs to support wss://)')">
+            </div>
+            <div class="settings-label ">PORT</div>
+            <div class="settings-value ">
+                <input id="settings_val_mqtt_port" type="text" onfocus="toast('The MQTT port. <br><br>(needs to support wss:// like 8081)')">
+            </div>
+            <div class="settings-label ">TOPIC</div>
+            <div class="settings-value ">
+                <input id="settings_val_mqtt_root_topics" type="text" onfocus="toast('The MQTT topic(s). <br><br>(prior to the field topic)')">
+            </div>
+
+            <!-- <div class="settings-label ">USERNAME</div>
+            <div class="settings-value ">
+                <input id="settings_val_mqtt_username" type="text" onfocus="toast('The MQTT account username. <br><br>(can be left blank)')">
+            </div>
+
+
+            <div class="settings-label ">PASSWORD</div>
+            <div class="settings-value ">
+                <input id="settings_val_mqtt_password" type="text" onfocus="toast('The MQTT account password. <br><br>(can be left blank)')">
+            </div>
+            <div class="clearfloat "></div> -->
+
+            <h3>OPENWEATHERMAP SERVICES</h3>
+            <div class="settings-label ">
+                <a href="https://home.openweathermap.org/users/sign_up" target="_blank">APP_ID</a>
+            </div>
+            <div class="settings-value ">
+                <input id="settings_val_appid" type="text" onfocus="toast('Your API CODE from OpenWeatherMap. (needed for wind observations)')">
+            </div>
+        </div>
+
+        <div id="settings_fields_page" class="page_hidden">
+            <h2 class="arrow_back" onclick="show_page('settings_menu_page')">&#8678;</h2>
+            <hr class="settings_hr">
+            <h3>FIELD1</h3>
+            <div class="settings-label ">LABEL</div>
+            <div class="settings-value ">
+                <input id="settings_val-field1-lbl" type="text" onfocus="toast('The custom label on Field1.')">
+            </div>
+            <div class="settings-label ">MQTT TOPIC</div>
+            <div class="settings-value ">
+                <input id="settings_val_field1_mqtt_topic" type="text" onfocus="toast('The right-most mqtt topic segment for Field1.')">
+            </div>
+            <div class="settings-label ">TEXT SIZE</div>
+            <div class="settings-value ">
+                <select id="settings_val_field1_text_size">
+                    <option>SMALL</option>
+                    <option>MEDIUM</option>
+                    <option>LARGE</option>
+                </select>
+            </div>
+            <div class="clearfloat "></div>
+
+            <h3>FIELD2</h3>
+            <div class="settings-label ">LABEL</div>
+            <div class="settings-value ">
+                <input id="settings_val-field2-lbl" type="text" onfocus="toast('The custom label on Field2.')">
+            </div>
+            <div class="settings-label ">MQTT TOPIC</div>
+            <div class="settings-value ">
+                <input id="settings_val_field2_mqtt_topic" type="text" onfocus="toast('The right-most mqtt topic segment for Field2.')">
+            </div>
+            <div class="settings-label ">TEXT SIZE</div>
+            <div class="settings-value ">
+                <select id="settings_val_field2_text_size">
+                    <option>SMALL</option>
+                    <option>MEDIUM</option>
+                    <option>LARGE</option>
+                </select>
+            </div>
+            <div class="clearfloat "></div>
+
+            <h3>FIELD3</h3>
+            <div class="settings-label ">LABEL</div>
+            <div class="settings-value ">
+                <input id="settings_val-field3-lbl" type="text" onfocus="toast('The custom label on Field3.')">
+            </div>
+            <div class="settings-label ">MQTT TOPIC</div>
+            <div class="settings-value ">
+                <input id="settings_val_field3_mqtt_topic" type="text" onfocus="toast('The right-most mqtt topic segment for Field3.')">
+            </div>
+            <div class="settings-label ">TEXT SIZE</div>
+            <div class="settings-value ">
+                <select id="settings_val_field3_text_size">
+                    <option>SMALL</option>
+                    <option>MEDIUM</option>
+                    <option>LARGE</option>
+                </select>
+            </div>
+            <div class="clearfloat "></div>
+        </div>
+
+        <div id="settings_readings_page" class="page_hidden">
+            <h2 class="arrow_back" onclick="show_page('settings_menu_page')">&#8678;</h2>
+            <hr class="settings_hr">
+            <h3>READINGS</h3>
+            <div id="settings_readings_list" style="height: 75%; overflow: scroll">
+                    <div class="settings_readings_item" value=""><input class="settings_readings_item_left" type="checkbox" checked disabled><span class="settings_readings_item_left">SPEED</span><span class="settings_readings_item_right">GEOLOCATION</span></div>
+                    <div class="settings_readings_item" value=""><input class="settings_readings_item_left" type="checkbox" checked disabled><span class="settings_readings_item_left">MAX. SPEED</span><span class="settings_readings_item_right">GEOLOCATION</span></div>
+
+
+
+            </div>
+        </div>
+    </form>
+    <script>
+        /*
+        If you set the meta tsags correctly, and put the web app on the home screen, 
+        then you can get rid of all the safari cruft, 
+        but you're still left with the iOS status bar (connectivity, clock, battery).
+        */
+
+        document.onreadystatechange = function () {
+            if (document.readyState == "interactive") {
+                window.scrollTo(0, 1);
+                addToHomescreen({
+                    startDelay: 5,
+                    maxDisplayCount: 1,
+                    lifespan: 20
+                });
+                initPage();
+                getSettings();
+            }
+        }
+    </script>
+
+</body>
+
+</html>

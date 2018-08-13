@@ -1,0 +1,250 @@
+* {
+    margin: 0;
+    padding: 0px;
+    color: white;
+}
+/* 
+@font-face {
+    font-family: digital_numbers;
+    src: url("digital_numbers.otf") format("opentype");
+    font-display: block;
+} */
+
+/* 
+@font-face {
+    font-family: baloo_paaji;
+    src: url('https://fonts.googleapis.com/css?family=Baloo+Paaji');
+    font-display: block;
+} */
+
+.container {
+    margin: auto;
+    max-width: 30em;
+    background-color: black;
+    height: 100vh;
+    padding: 10px;
+}
+
+.label {
+    color: yellow;
+    text-align: center;
+    margin: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 250%;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.settings_label{
+    color: black;
+}
+
+.top-label{
+    margin-top: 20px;
+}
+
+.right-icon {
+    float: right;
+}
+
+.middle-icon {
+    opacity: 1 !important;
+}
+
+.middle-div {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 10px;
+    width: 60%;
+    z-index: 0;
+    left: 20%;
+}
+
+img {
+    /* width: 48px; */
+    height: 48px;
+    opacity: 0.4;
+    z-index: 100;
+}
+
+.number {
+    text-align: center;
+    color: white;
+    margin: auto;
+    /* line-height: 100%; */
+    line-height: 85%;
+    /* font-family: digital_numbers; */
+    font-family: 'Baloo Paaji';
+    font-weight: 100;
+    -webkit-text-stroke-color: black;
+    -webkit-font-smoothing: antialiased;
+}
+
+.number-big {
+    /* font-size: 1200%; */
+    font-size: 1400%;
+    padding-top: 0;
+    -webkit-text-stroke-width: 7px;
+}
+
+.number-small {
+    /* font-size: 450%; */
+    font-size: 550%;
+    padding-top: 4px;
+    margin-top: -12px;
+    text-align: center;
+    -webkit-text-stroke-width: 4px;
+    background-color: yellow;
+    background-image:
+    linear-gradient(0deg, transparent 50%, black 50%),
+    linear-gradient(360deg, black 50%, transparent 50%);
+    white-space: nowrap;
+}
+
+hr {
+    background-color: #1c1c1c !important;
+    color: #1c1c1c !important;
+    border: solid 2px #1c1c1c !important;
+    height: 4px !important;
+    width: 96% !important;
+    /* width: 96% !important; */
+    margin: auto;
+    margin-top: 10px;
+}
+
+.settings_hr{
+    background-color: gainsboro !important;
+    color: gainsboro !important;
+    border: solid 2px gainsboro !important;
+}
+
+
+.half {
+    width: 48%;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.left {
+    float: left;
+    text-align: right;
+}
+
+.right {
+    float: right;
+    text-align: left;
+    width: 45% !important;
+}
+
+.tier-2 {
+    margin: auto;
+    padding-top: 10px;
+    position: relative;
+}
+
+.tier-2-label {
+    font-size: 200%;
+}
+
+.value {
+    color: #ffffff;
+    margin-top: -14px;
+    text-align: center;
+    padding: 9px;
+}
+
+.vr {
+    background-color: #1c1c1c !important;
+    color: #1c1c1c !important;
+    border: solid 2px #1c1c1c !important;
+    height: 90px !important;
+    width: 4px !important;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.settings_vr{
+    background-color: gainsboro !important;
+    color: gainsboro !important;
+    border: solid 2px gainsboro !important;
+    height: 100px !important;
+}
+
+
+.direction{
+    opacity: 1 !important;
+    margin-left: 15px;
+    margin-top: 2px;
+}
+
+.number-small-decimal-pt{
+    font-family: sans-serif;
+}
+
+.left-sm-nums{
+    /* margin-left: 5px;  */
+    margin-left: -15px;
+}
+
+#lbl_max_spd{
+    margin-top: 12px;
+}
+
+.tingle-modal-box {
+    max-width: 400px !important;
+}
+
+.left-label{
+    margin-left: -15px;
+}
+
+.right-label{
+    margin-left: 5px;
+}
+
+.right-sm-num{
+    margin-left: 10px;
+}
+
+.page_hidden{
+    display: none;
+    height: 443px;
+}
+
+.settings_icon_left{
+    height: 70px;
+    position: relative;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.setting_icon_right{
+    height: 70px;
+    position: relative;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    margin-left: 22px;
+}
+
+.black-colon{
+    color: black;
+    position: relative;
+    display: inline-block;
+    top: -3px;
+}
+  
+.white-colon{
+    color: white;
+    position: relative;
+    display: inline-block;
+    top: -3px;
+}
+
+@media only screen and (min-width: 350px) {
+    .tier-2-label {
+        font-size: 150%;
+    }
+}

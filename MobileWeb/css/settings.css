@@ -1,0 +1,161 @@
+.tingle-modal-box__content {
+    color: black !important;
+    padding: 5px;
+    font-family: sans-serif;
+    padding: 20px;
+    padding-left: 25px;
+}
+
+.tingle-modal-box__content h2{
+    margin-top: 0px;
+     color: black !important;
+    font-size: 25px !important;
+    margin-bottom: 0px;
+}
+
+.tingle-modal-box__content h2.arrow_back{
+    font-size: 50px !important;
+}
+
+.tingle-modal-box__content h3{
+    margin-top: 5px;
+    color: black !important;
+    font-size: 20px !important;
+    margin-bottom: 0px;
+}
+
+.tingle-btn{
+    font-family: sans-serif;
+}
+
+.settings-label{
+    color: black !important;
+    float: left;
+    width: 35%;
+    padding: 5px;
+    clear: left;
+}
+
+.settings-value{
+    color: black !important;
+    float: left;
+    width: 65%;
+    padding: 2px;
+}
+
+.settings-label-50{
+    color: black !important;
+    float: left;
+    width: 50%;
+    padding: 5px;
+    clear: left;
+}
+
+.settings-value-50{
+    color: black !important;
+    float: left;
+    width: 45%;
+    padding: 2px;
+}
+
+.clearfloat {
+    clear: left;
+}
+
+.settings_readings_item_left{
+    float: left;
+    color: black;
+    padding: 2px;
+    padding-left: 7px;
+}
+
+.settings_readings_item_left_chk{
+    float: left;
+    padding-left: 7px;
+}
+
+.settings_readings_item_right{
+    float: right;
+    color: black;
+    padding: 2px;
+    padding-right: 5px;
+    font-size: 12px;
+}
+
+.tingle-modal-box__content input,button{
+    color: black !important;
+    padding: 5px;
+    width: 100%;
+}
+
+.tingle-btn--pull-right {
+    color: white !important;
+    font-weight: bold;
+}
+
+.tingle-btn {
+   margin-left: 0 !important;
+}
+
+#btn-dist{
+    width: 48%;
+}
+
+#btn-max{
+    width: 48%;
+}
+
+.tingle-modal-box__content input[type=checkbox]{
+    width: 24px;
+    height: 24px;
+}
+
+.tingle-modal-box__content .action-message{
+    color: black !important;
+    float: right;
+    font-size: 90%;
+    padding: 3px;
+}
+
+.tingle-modal-box__content select{
+    color: black;
+    width: 100%;
+    height: 30px;
+    -webkit-appearance: listbox;
+    background-color: white;
+    border: 1px solid #c5c5c5;
+}
+
+.tingle-modal-box__content option{
+    color: black;
+}
+
+.tingle-modal-box__content option:checked { 
+    color: black;
+    font-weight: bold;
+}
+
+.settings_biline{
+    color: black;
+    font-size: 16px;
+    margin-bottom: 7px;
+}
+
+.settings_readings_item_disabled{
+    clear: left;
+    background-color: gainsboro;
+    height: 35px;
+    margin-bottom: 2px;
+    padding: 5px;
+}
+
+.settings_readings_item{
+    clear: left;
+    background-color: transparent;
+    border: 1px solid gainsboro;
+    height: 35px;
+    margin-bottom: 2px;
+    padding: 5px;
+}
+
+
