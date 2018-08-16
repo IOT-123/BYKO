@@ -16,68 +16,67 @@
     <link rel="icon" sizes="192x192" href="img/iot123_192.png ">
     <link rel="icon" sizes="512x512" href="img/iot123_512.png ">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/vnd.microsoft.icon ">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+Paaji">
-    <link rel="stylesheet" href="css/dead-simple-grid.css" type="text/css ">
     <link rel="stylesheet" href="css/index.css" type="text/css ">
+
     <link rel="stylesheet" href="css/tingle.min.css" />
     <link rel="stylesheet" href="css/settings.css" />
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css ">
     <link rel="stylesheet" type="text/css" href="css/addtohomescreen.css">
     <link rel="stylesheet" type="text/css" href="css/vanilla-toast.css">
+
 </head>
 
 <body scroll="no" style="overflow: hidden ">
     <div class="container ">
         <div class="row ">
-            <img src="img/lock-2.png" onclick="toggleLock(this); ">
-            <div class="middle-div ">
-                <img id="toolbar_btn_play" src="img/play.png" onclick="togglePlay(this);" class="middle-icon ">
-            </div>
-            <img src="img/cog.png" class="right-icon" onclick="showSettings(); ">
-
-        </div>
-        <hr>
-        <div class="row ">
-            <div class="label top-label ">SPEED</div>
-            <div id="screen_val_spd" class="number number-big ">00</div>
-        </div>
-        <div class="row ">
-            <div id="lbl_max_spd" class="label half left ">MAX</div>
-            <div id="screen_val_max_spd" class="number number-small half right ">00</div>
-        </div>
-        <hr>
-        <div class="row ">
-            <div class="col half ">
-                <div class="col tier-2 dynamic_field" dynamic-field="DISTANCE" localstorage-key="dynamicField1" onclick="cycle_field(this)">
-                    <div class="number number-small left-sm-nums field-value">00</div>
-                    <div class="label tier-2-label left-label ">DISTANCE</div>
+            <div class="big-box big-box-left">
+                <div>
+                    <img src="img/lock-2.png" class="icon left-icon" onclick="toggleLock(this); ">
+                    <div class="middle-div ">
+                        <img id="toolbar_btn_play" src="img/play.png" onclick="togglePlay(this);" class="icon middle-icon ">
+                    </div>
+                    <img src="img/cog.png" class="icon right-icon" onclick="showSettings(); ">
+                </div>
+                <hr>
+                <div>
+                    <div class="label top-label ">SPEED</div>
+                    <div id="screen_val_spd" class="number number-big ">00</div>
+                </div>
+                <div>
+                    <div id="lbl_max_spd" class="label half left left-label">MAX</div>
+                    <div id="screen_val_max_spd" class="number number-small half right ">00</div>
                 </div>
             </div>
-            <div class="col half ">
-                <div class="col tier-2 dynamic_field" dynamic-field="DIRECTION" localstorage-key="dynamicField2" onclick="cycle_field(this)">
-                    <div class="number number-small right-sm-num field-value">--</div>
-                    <div class="label tier-2-label right-label ">DIRECTION</div>
+            <!--<div class="clearfloat "></div> -->
+            <div class="vr big-box-vr"></div>
+            <hr class="big-box-hr">
+            <div class="big-box big-box-right">
+                <div class="big-box-right-row">
+                    <div class="col half tier-2 dynamic_field" dynamic-field="DISTANCE" dynamic-field-size="LARGE" localstorage-key="dynamicField1" onclick="cycle_field(this)">
+                        <div class="number number-small left-sm-nums field-value">00</div>
+                        <div class="label tier-2-label ">DISTANCE</div>
+                    </div>
+                    <div class="vr small-box-vr"></div>
+                    <div class="col half tier-2 dynamic_field" dynamic-field="DIRECTION" dynamic-field-size="LARGE" localstorage-key="dynamicField2" onclick="cycle_field(this)">
+                        <div class="number number-small field-value">--</div>
+                        <div class="label tier-2-label ">DIRECTION</div>
+                    </div>
+                </div>
+                <hr class="small-box-hr">
+                <div class="big-box-right-row">
+                    <div class="col half tier-2 dynamic_field" dynamic-field="LATITUDE" dynamic-field-size="LARGE" localstorage-key="dynamicField3" onclick="cycle_field(this)">
+                        <div id="screen_val_fld1" class="number number-small left-sm-nums field-value">00</div>
+                        <div id="screen_lbl_fld1" class="label tier-2-label ">BPM</div>
+                    </div>
+                    <div class="vr small-box-vr vr small-box-vr  small-box-vr-lower"></div>
+                    <div class="col half tier-2 dynamic_field" dynamic-field="LONGITUDE" dynamic-field-size="LARGE" localstorage-key="dynamicField4" onclick="cycle_field(this)">
+                        <div id="screen_val_fld2" class="number number-small field-value">00</div>
+                        <div id="screen_lbl_fld2" class="label tier-2-label ">CADENCE</div>
+                    </div>
                 </div>
             </div>
-            <div class="vr "></div>
         </div>
-        <hr>
-        <div class="row ">
-            <div class="col half ">
-                <div class="col tier-2 dynamic_field" dynamic-field="LATITUDE" localstorage-key="dynamicField3" onclick="cycle_field(this)">
-                    <div id="screen_val_fld1" class="number number-small left-sm-nums field-value">00</div>
-                    <div id="screen_lbl_fld1" class="label tier-2-label left-label ">BPM</div>
-                </div>
-            </div>
-            <div class="col half ">
-                <div class="col tier-2 dynamic_field" dynamic-field="LONGITUDE" localstorage-key="dynamicField4" onclick="cycle_field(this)">
-                    <div id="screen_val_fld2" class="number number-small right-sm-num field-value">00</div>
-                    <div id="screen_lbl_fld2" class="label tier-2-label right-label ">CADENCE</div>
-                </div>
-            </div>
-            <div class="vr "></div>
-        </div>
-        <hr>
     </div>
 
     <script src="js/NoSleep.min.js"></script>
@@ -98,48 +97,47 @@
             <h2>SETTINGS</h2>
             <hr class="settings_hr">
             <div class="row ">
-                <div class="col half ">
-                    <div class="col tier-2 " onclick="show_page('settings_trip_page')">
+                    <div class="col half tier-2 settings-cell" onclick="show_page('settings_trip_page')">
                         <img class="settings_icon_left" src="img/settings_trip.jpeg">
                         <div class="label tier-2-label left-label settings_label">TRIP</div>
                     </div>
-                </div>
-                <div class="col half ">
-                    <div class="col tier-2" onclick="show_page('settings_services_page')">
+
+
+                    <div class="col half tier-2 settings-cell" onclick="show_page('settings_services_page')">
                         <img class="setting_icon_right" src="img/settings_services.png">
                         <div class="label tier-2-label right-label settings_label">SERVICES</div>
                     </div>
-                </div>
+
                 <div class="vr settings_vr"></div>
             </div>
             <hr class="settings_hr">
             <div class="row ">
-                <div class="col half ">
-                    <div class="col tier-2 " onclick="show_page('settings_fields_page')">
+
+                    <div class="col half tier-2 settings-cell" onclick="show_page('settings_fields_page')">
                         <img class="settings_icon_left" src="img/settings_fields.png">
                         <div class="label tier-2-label left-label settings_label">FIELDS</div>
                     </div>
-                </div>
-                <div class="col half ">
-                    <div class="col tier-2 " onclick="show_page('settings_readings_page')">
+
+
+                    <div class="col half tier-2 settings-cell" onclick="show_page('settings_readings_page')">
                         <img class="setting_icon_right" src="img/observations.png">
                         <div class="label tier-2-label right-label settings_label">READINGS</div>
                     </div>
-                </div>
+
                 <div class="vr settings_vr"></div>
             </div>
             <hr class="settings_hr">
             <div class="row ">
-                <div class="col half ">
-                    <div class="col tier-2 ">
+
+                    <div class="col half tier-2 " style="height: 120px;">
 
                     </div>
-                </div>
-                <div class="col half ">
-                    <div class="col tier-2 ">
+
+
+                    <div class="col half tier-2 ">
 
                     </div>
-                </div>
+
                 <div class="vr settings_vr"></div>
             </div>
             <hr class="settings_hr">

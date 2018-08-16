@@ -6,29 +6,38 @@
     padding-left: 25px;
 }
 
-.tingle-modal-box__content h2{
+.tingle-modal-box__content h2 {
     margin-top: 0px;
-     color: black !important;
+    color: black !important;
     font-size: 25px !important;
     margin-bottom: 0px;
+    font-size: 45px;
+    line-height: 48px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    padding: 0;
 }
 
-.tingle-modal-box__content h2.arrow_back{
+.tingle-modal-box__content h2.arrow_back {
     font-size: 50px !important;
 }
 
-.tingle-modal-box__content h3{
+.tingle-modal-box__content h3 {
     margin-top: 5px;
     color: black !important;
     font-size: 20px !important;
     margin-bottom: 0px;
+    padding: 0;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 40px;
 }
 
-.tingle-btn{
+.tingle-btn {
     font-family: sans-serif;
 }
 
-.settings-label{
+.settings-label {
     color: black !important;
     float: left;
     width: 35%;
@@ -36,22 +45,23 @@
     clear: left;
 }
 
-.settings-value{
+.settings-value {
     color: black !important;
     float: left;
     width: 65%;
     padding: 2px;
 }
 
-.settings-label-50{
+.settings-label-50 {
     color: black !important;
     float: left;
     width: 50%;
     padding: 5px;
     clear: left;
+    font-size: 14px;
 }
 
-.settings-value-50{
+.settings-value-50 {
     color: black !important;
     float: left;
     width: 45%;
@@ -62,19 +72,19 @@
     clear: left;
 }
 
-.settings_readings_item_left{
+.settings_readings_item_left {
     float: left;
     color: black;
     padding: 2px;
     padding-left: 7px;
 }
 
-.settings_readings_item_left_chk{
+.settings_readings_item_left_chk {
     float: left;
     padding-left: 7px;
 }
 
-.settings_readings_item_right{
+.settings_readings_item_right {
     float: right;
     color: black;
     padding: 2px;
@@ -82,7 +92,7 @@
     font-size: 12px;
 }
 
-.tingle-modal-box__content input,button{
+.tingle-modal-box__content input, button {
     color: black !important;
     padding: 5px;
     width: 100%;
@@ -94,30 +104,30 @@
 }
 
 .tingle-btn {
-   margin-left: 0 !important;
+    margin-left: 0 !important;
 }
 
-#btn-dist{
+#btn-dist {
     width: 48%;
 }
 
-#btn-max{
+#btn-max {
     width: 48%;
 }
 
-.tingle-modal-box__content input[type=checkbox]{
+.tingle-modal-box__content input[type=checkbox] {
     width: 24px;
     height: 24px;
 }
 
-.tingle-modal-box__content .action-message{
+.tingle-modal-box__content .action-message {
     color: black !important;
     float: right;
     font-size: 90%;
     padding: 3px;
 }
 
-.tingle-modal-box__content select{
+.tingle-modal-box__content select {
     color: black;
     width: 100%;
     height: 30px;
@@ -126,22 +136,22 @@
     border: 1px solid #c5c5c5;
 }
 
-.tingle-modal-box__content option{
+.tingle-modal-box__content option {
     color: black;
 }
 
-.tingle-modal-box__content option:checked { 
+.tingle-modal-box__content option:checked {
     color: black;
     font-weight: bold;
 }
 
-.settings_biline{
+.settings_biline {
     color: black;
     font-size: 16px;
     margin-bottom: 7px;
 }
 
-.settings_readings_item_disabled{
+.settings_readings_item_disabled {
     clear: left;
     background-color: gainsboro;
     height: 35px;
@@ -149,7 +159,7 @@
     padding: 5px;
 }
 
-.settings_readings_item{
+.settings_readings_item {
     clear: left;
     background-color: transparent;
     border: 1px solid gainsboro;
@@ -158,4 +168,63 @@
     padding: 5px;
 }
 
+.page_hidden {
+    display: none;
+    height: 443px;
+}
 
+a {
+    color: rgb(255,64,129);
+    font-weight: 500;
+}
+
+.settings_hr {
+    background-color: gainsboro !important;
+    color: gainsboro !important;
+    border: solid 2px gainsboro !important;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+    width: 100% !important;
+}
+
+.settings_vr {
+    background-color: gainsboro !important;
+    color: gainsboro !important;
+    border: solid 2px gainsboro !important;
+    height: 100px !important;
+    margin-bottom: 28px;
+}
+
+.settings_icon_left {
+    height: 70px;
+    position: relative;
+    vertical-align: middle;
+}
+
+.setting_icon_right {
+    height: 70px;
+    position: relative;
+}
+
+.settings-cell {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.settings_label {
+    color: black;
+}
+
+.tingle-modal-box__content .tier-2 {
+    padding-top: 0;
+}
+
+@media only screen and (min-width: 350px) {
+    .tingle-modal-box__content .tier-2-label {
+        font-size: 150%;
+    }
+}

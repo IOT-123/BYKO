@@ -3,6 +3,13 @@
 
 
 var showSettings = function () {
+    console.log("showSettings");
+    if (isLandscape()) {
+        console.log("showSettings 2");
+        vanillaToast.warning('Rotate screen upright for Settings!', { duration: 4000, fadeDuration: 180 });
+        console.log("showSettings 3");
+        return;
+    }
     var settingsForm = new tingle.modal({
         closeMethods: [],
         footer: true,
@@ -62,9 +69,9 @@ var showSettings = function () {
         var active_list = [];
         var list_elem = document.getElementById("settings_readings_list");
         var chks = list_elem.getElementsByClassName("settings_readings_item_left_chk");
-        Array.prototype.forEach.call(chks, function(chk) {
+        Array.prototype.forEach.call(chks, function (chk) {
             var id = chk.getAttribute("dynamic-field");
-            if (chk.checked){
+            if (chk.checked) {
                 active_list.push(id);
             }
             _dynamic_fields.list[_dynamic_fields.indexes[id]].active = chk.checked;
@@ -138,13 +145,13 @@ var build_readings_list = function () {
         span_left.innerText = item.label;
         row.appendChild(span_left);
         var group = "";
-        if (item.needs_geo){
+        if (item.needs_geo) {
             group = "GEOLOCATION"
-        } else if (item.needs_owm){
+        } else if (item.needs_owm) {
             group = "OPENWEATHERMAP"
-        }else if (item.needs_mqtt){
+        } else if (item.needs_mqtt) {
             group = "MQTT"
-        }else{
+        } else {
             group = "MOBILE"
         }
         const span_right = document.createElement('span');
@@ -184,4 +191,22 @@ var show_page = function (id) {
     document.getElementById("settings_fields_page").style.display = 'none';
     document.getElementById("settings_readings_page").style.display = 'none';
     document.getElementById(id).style.display = 'block';
+}
+
+function isLandscape() {
+    var object = window.screen.orientation || window.screen.msOrientation || window.screen.mozOrientation || null;
+    if (object) {
+        if (object.type.indexOf('landscape') !== -1) { return true; }
+        if (object.type.indexOf('portrait') !== -1) { return false; }
+    }
+    if ('orientation' in window) {
+        var value = window.orientation;
+        if (value === 0 || value === 180) {
+            return false;
+        } else if (value === 90 || value === 270) {
+            return true;
+        }
+    }
+    // fallback to comparing width to height
+    return window.innerWidth > window.innerHeight;
 }

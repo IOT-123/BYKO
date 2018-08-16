@@ -144,9 +144,9 @@ var flashTime = function () {
     Array.prototype.forEach.call(elems, function (elem) {
         if (elem.attributes['dynamic-field'].value == "TIME") {
             var value_elem = elem.getElementsByClassName("number-small")[0];
-            if (value_elem.innerHTML.indexOf('<span class="black') == -1){
+            if (value_elem.innerHTML.indexOf('<span class="black') == -1) {
                 time = time.replace(":", '<span class="black-colon">:</span>');
-            }else{
+            } else {
                 time = time.replace(":", '<span class="white-colon">:</span>');
             }
             value_elem.innerHTML = time;
@@ -251,7 +251,8 @@ var toggleLock = function (img) {
         if (!confirmLock()) {
             return;
         }
-        screen.orientation.lock('portrait');
+        var orientation = isLandscape() ? 'landscape' : 'portrait';
+        screen.orientation.lock(orientation);
         _no_sleep.enable(); // keep the screen on!
         img.src = "img/unlock-2.png";
     }
@@ -347,10 +348,12 @@ function findWithAttr(array, attr, value) {
 
 var displayDynamicFields = function () {
     console.log("displayDynamicFields");
+    var classnames = { SMALL: "field-value-small", MEDIUM: "field-value-medium", LARGE: "field-value-large" };
     _last_dynamic_update = new Date();
     var elems = document.getElementsByClassName("dynamic_field");
     Array.prototype.forEach.call(elems, function (elem) {
         var dynamic_field = elem.attributes['dynamic-field'].value;
+        var field_size = elem.attributes['dynamic-field-size'].value;
         var dynamic_field_definition = _dynamic_fields.list[_dynamic_fields.indexes[dynamic_field]];
         var label_elem = elem.getElementsByClassName("label")[0];
         var value_elem = elem.getElementsByClassName("field-value")[0];
@@ -361,22 +364,16 @@ var displayDynamicFields = function () {
         var style = "linear-gradient(0deg, transparent 50%, black 50%), linear-gradient(360deg, black 50%, transparent 50%)";
         value_elem.style.backgroundImage = style;
         // set observation sizes
-        if (dynamic_field_definition.value_size == "SMALL") {
-            value_elem.style.fontSize = "16px";
-            value_elem.style.lineHeight = "65px";
-            value_elem.style.webkitTextStrokeWidth = "1px";
-            //-webkit-text-stroke-width: 1px;
-        } else if (dynamic_field_definition.value_size == "MEDIUM") {
-            value_elem.style.fontSize = "400%";
-            value_elem.style.lineHeight = "119%";
-            value_elem.style.webkitTextStrokeWidth = "3px";
-            //-webkit-text-stroke-width: 3px;
-        } else {
-            value_elem.style.fontSize = "550%";
-            value_elem.style.lineHeight = "85%";
-            value_elem.style.webkitTextStrokeWidth = "4px";
-            //-webkit-text-stroke-width: 4px;
-        }        
+        if (field_size != dynamic_field_definition.value_size) {
+            removeClassnames(value_elem, classnames);
+        }
+        console.log("------------------------");
+        console.log(dynamic_field_definition.label);
+        console.log("field_size: " + field_size);
+        console.log("dynamic_field_definition.value_size: " + dynamic_field_definition.value_size);
+        value_elem.classList.add(classnames[dynamic_field_definition.value_size]);
+        elem.attributes['dynamic-field-size'].value = dynamic_field_definition.value_size;
+        console.log(value_elem.className);
         if (!dynamic_field_definition.own_update) {
             if (dynamic_field_definition.value != null && label_elem.innerHTML == "DISTANCE") {
                 value_elem.innerHTML = formatNumber(dynamic_field_definition.value, 3);
@@ -385,11 +382,24 @@ var displayDynamicFields = function () {
                 var style = "linear-gradient(" + dynamic_field_definition.start_degree + "deg, transparent 50%, black 50%), linear-gradient(" + dynamic_field_definition.end_degree + "deg, black 50%, transparent 50%)";
                 value_elem.style.backgroundImage = style;
             } else {
-                value_elem.innerHTML = dynamic_field_definition.value || "--";
+                var value = "";
+                if (dynamic_field_definition.value == null) {
+                    value = "--";
+                } else {
+                    value = dynamic_field_definition.value.toString().substr(0, 8);
+                }
+                value_elem.innerHTML = value;
             }
         }
     });
 };
+
+var removeClassnames = function (elem, classNames) {
+    Object.keys(classNames).some(function(key){
+        console.log(classNames[key]);
+        elem.classList.remove(classNames[key]);
+    });
+}
 
 var confirmLock = function () {
     var conf = confirm("Fullscreen and Keep Screen Awake?");

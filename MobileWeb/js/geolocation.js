@@ -61,6 +61,8 @@ var onPosition = function (position) {
     _lastPos.lng = position.coords.longitude;
     if (_fetch_wind.app_id && !_fetch_wind.timer) {
         initWindFetch();
+    }else{
+        console.log("OpenWeatherMap: app_is not present");
     }
 }
 
