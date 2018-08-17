@@ -13,3 +13,5 @@ The readings the ESP8266 make are published to a MQTT server (one that is compat
 The MobileWeb subscribes to the readings as well as Geolocation, OpenWeatherMap and Device API.
 
 These are displayed in an easy to read, configurable dashboard.
+
+[Instructions](https://www.hackster.io/iot1232/iot123-byko-mashup-mobile-web-for-cyclists-7f8aa0)
