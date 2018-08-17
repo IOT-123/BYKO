@@ -15,3 +15,8 @@ The MobileWeb subscribes to the readings as well as Geolocation, OpenWeatherMap 
 These are displayed in an easy to read, configurable dashboard.
 
 [Instructions](https://www.hackster.io/iot1232/iot123-byko-mashup-mobile-web-for-cyclists-7f8aa0)
+
+[Video 1](https://youtu.be/6Fz2syrQn6w)
+
+[Video 2](https://youtu.be/CD2wLWxXo2w)
+
